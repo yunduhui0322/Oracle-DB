@@ -1,0 +1,27 @@
+sqlplus -
+system계정은 최고관리자 계정
+오라클 유저 생성
+https://socam.tistory.com/5
+
+오라클18버전 이상일때
+등록할 user이름앞 c##을 붙여야함
+예 > c##ora_user
+
+c##을 붙이지 않으려면 하단 명령어 입력
+alter session set "_ORACLE_SCRIPT"=true;
+=========================================================
+number 숫자
+char 문자(고정 문자열)-->>char(20) 20단위만큼 저장
+a 하나만 저장할 경우 19개의 공간이 빈공간으로 남아있다
+varchar2 문자(가변길이 문자열)-->>varchar2(20) 20단위 넘어갈경우 에러가 난다.
+a 하나만 저장할경우 a만 저장한다. 빈공백이 남아있지 않다.
+date 날짜(년월일시분초요일)
+소수점 테이블 생성 number(5,2)
+100.00 99.99 총자리수는 5, 소수점이하 2자리표기 
+
+테이블 스페이스 권한 주기
+alter user ora_user default TABLESPACE users quota UNLIMITED on users;
+
+테이블에 데이터를 insert를 하면 임시저장소에 저장되므로
+commit 해야 데이터가 저장이 된다.
+roallback하면은 임시저장소에 있는 데이터 삭제
