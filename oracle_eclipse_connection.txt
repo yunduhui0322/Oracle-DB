@@ -1,0 +1,11 @@
+c드라이브에 jdk re lib ext에 oracle product jdbc lib oradbc6_g를 옮긴다
+
+그리고 dynamic프로젝트에 webapp web-inf에 lib에 ojdbc6_g.jar을 옮긴다.
+Class.forName("oracle.jdbc.driver.OracleDriver");//메모리에 jdbc탑재
+			//driver properties 의 connection URL -->>접속 URL
+			conn =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","ora_user","1234");
+			//커넥션 실행(접속url,id,pw);
+			stmt = conn.createStatement();//sql구문을 입력하는 창 생성
+			String sql = "select * from employees order by employee_id";
+			rs = stmt.executeQuery(sql);//sql구문을 입력
+			//107개의 데이터가 rs에 들어가있다.
