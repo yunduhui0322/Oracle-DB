@@ -1,0 +1,23 @@
+tomcat 폴더에 lib 들어가서 tomcat-dbpc.jar ojdbc6_jar있는곳에 넣는다.
+web.xml-->><resource-ref>
+  	     <description>Connection</description>
+  	     <res-ref-name>jdbc/Oracle11g</res-ref-name>
+  	     <res-type>javax.sql.DataSource</res-type>
+  	     <res-auth>Container</res-auth>
+                </resource-ref>
+server폴더에 tomcat폴더 context.xml-->><Resource auth = "Container" 
+	driverClassName = "oracle.jdbc.driver.OracleDriver"
+	url = "jdbc:oracle:thin:@localhost:1521:xe"
+	username = "ora_user"
+	password = "1234"
+	name = "jdbc/Oracle11g"
+	type = "javax.sql.DataSource"
+	maxActive = "50"
+	maxWait = "1000"/>
+
+하고나서 publish 해줘야한다.
+
+해주고 try부분에 기존의 conn부분과 다르게
+			Context context = new InitialContext();
+			ds = (DataSource)context.lookup("java:comp/env/jdbc/Oracle11g");
+			conn = ds.getConnection();
